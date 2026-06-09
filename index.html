@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Faith Oriakhi — Product Manager</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+  :root {
+    --ink: #0f0f0f;
+    --ink-soft: #4a4a4a;
+    --ink-muted: #8a8a8a;
+    --bg: #fafaf8;
+    --bg-card: #ffffff;
+    --accent: #1a3a2a;
+    --accent-light: #e8f0eb;
+    --accent-mid: #3d6b52;
+    --border: #e4e4e0;
+    --tag-bg: #f0f0ed;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* SECTIONS */
+  section {
+    padding: 100px 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  section:first-of-type { padding-top: 140px; }
+
+  /* HERO */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--accent-mid);
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-mid);
+  }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--accent-mid); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    border: 1.5px solid var(--border);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: border-color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-item {}
+  .stat-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-mid);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background: var(--accent-mid);
+    display: inline-block;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin-top: 0.75rem;
+    max-width: 520px;
+    font-weight: 300;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-sidebar {}
+
+  .sidebar-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .sidebar-block h4 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .sidebar-block p, .sidebar-block li {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .sidebar-block ul { list-style: none; }
+  .sidebar-block li { padding: 0.2rem 0; }
+  .sidebar-block li::before { content: '→ '; color: var(--accent-mid); font-size: 0.8rem; }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: default;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+    transform: translateY(-2px);
+  }
+
+  .project-card.featured {
+    grid-column: span 2;
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    background: var(--tag-bg);
+    color: var(--ink-muted);
+    margin-bottom: 1rem;
+  }
+
+  .project-card.featured .project-tag {
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+  }
+
+  .project-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .project-card.featured h3 { color: #fff; font-size: 1.6rem; }
+
+  .project-card p {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-card.featured p { color: rgba(255,255,255,0.75); }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .project-score {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent-mid);
+  }
+
+  .project-card.featured .project-score { color: rgba(255,255,255,0.9); }
+
+  .project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+
+  .skill-chip {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: var(--tag-bg);
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .project-card.featured .skill-chip {
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .skill-group {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .skill-group h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-mid);
+    margin-bottom: 1rem;
+  }
+
+  .skill-group ul { list-style: none; }
+
+  .skill-group li {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+  }
+
+  .skill-group li:last-child { border-bottom: none; }
+
+  /* EXPERIENCE */
+  .experience-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .exp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .exp-role {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .exp-company {
+    font-size: 0.9rem;
+    color: var(--accent-mid);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+
+  .exp-desc {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .exp-date {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    white-space: nowrap;
+    font-weight: 500;
+    padding-top: 0.2rem;
+  }
+
+  /* CERTIFICATIONS */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .cert-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .cert-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .cert-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .cert-issuer {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+  }
+
+  /* CONTACT */
+  .contact-wrapper {
+    background: var(--accent);
+    border-radius: 16px;
+    padding: 4rem;
+    text-align: center;
+    color: #fff;
+  }
+
+  .contact-wrapper h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .contact-wrapper p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-links a {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background 0.2s;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .contact-links a:hover { background: rgba(255,255,255,0.22); }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2.5rem 5%;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr 1fr; }
+    .exp-card { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .contact-wrapper { padding: 2.5rem 1.5rem; }
+    .hero-stats { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Faith Oriakhi</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="padding: 0 5%; max-width: 1100px; margin: 0 auto;">
+  <div class="hero">
+    <span class="hero-eyebrow">Product Manager · Lagos, Nigeria</span>
+    <h1>Building products that <em>solve real problems</em> for real people.</h1>
+    <p class="hero-desc">
+      I am a Product Manager with experience across product documentation, prioritisation frameworks, cross-functional coordination, stakeholder management, and product strategy. I specialise in turning ambiguity into clarity and complexity into execution-ready decisions.
+    </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-secondary">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">9</div>
+        <div class="stat-label">Stages Completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">9.5</div>
+        <div class="stat-label">Top Score Achieved</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">13+</div>
+        <div class="stat-label">Tickets Structured</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Products Worked On</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-eyebrow">About Me</span>
+    <h2 class="section-title">PM by skill,<br/>researcher by instinct.</h2>
+    <p class="section-subtitle">I came into product management from a project coordination background and built my PM skills entirely through practice, research, and delivery under pressure.</p>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I started with a BSc in Estate Management from the University of Benin and built my career through project coordination, administrative operations, and eventually product work. I am comfortable operating at the intersection of business strategy, user needs, and technical implementation.</p>
+      <p>My approach to product management is evidence-based and execution-focused. I do not make decisions without understanding the data behind them, and I do not write a document that an engineering or design team cannot act on immediately.</p>
+      <p>Beyond product work, I am building Amé — a Nigerian cosmetic brand focused on odour-control and underarm care, formulated using locally sourced ingredients. Running a brand has sharpened my thinking on user research, product positioning, and building for a specific market.</p>
+      <p>I am actively seeking remote Product Management roles and available for PM, operations, and product coordination opportunities globally.</p>
+    </div>
+    <div class="about-sidebar">
+      <div class="sidebar-block">
+        <h4>Currently</h4>
+        <ul>
+          <li>HNG Tech PM Internship — Stage 9</li>
+          <li>Building Amé Cosmetics</li>
+          <li>Open to remote PM roles</li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <h4>Education</h4>
+        <ul>
+          <li>BSc Estate Management — University of Benin</li>
+          <li>ALX AI Career Essentials</li>
+          <li>ALX Virtual Assistant Programme</li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <h4>Find Me</h4>
+        <ul>
+          <li>LinkedIn: linkedin.com/in/faithoriakhi</li>
+          <li>Location: Nigeria (Remote-ready)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-header">
+    <span class="section-eyebrow">Selected Work</span>
+    <h2 class="section-title">Projects &amp; Case Studies</h2>
+    <p class="section-subtitle">A selection of product work across strategy, documentation, prioritisation, and execution planning.</p>
+  </div>
+  <div class="projects-grid">
+
+    <!-- FEATURED -->
+    <div class="project-card featured">
+      <span class="project-tag">Prioritisation · Stakeholder Management</span>
+      <h3>VendSync Q3 Roadmap Crisis</h3>
+      <p>Inherited a chaotic five-item product backlog with conflicting stakeholder demands and only 15 engineering sprint points. Applied the RICE prioritisation framework to score all items, made data-backed build and cut decisions, and wrote a formal pushback memo to the CEO defending the AI Inventory Predictor cut. Balanced technical debt against revenue opportunities with documented reasoning for every decision.</p>
+      <div class="project-meta">
+        <span class="project-score">Score: 9.5 / 10</span>
+      </div>
+      <div class="project-skills">
+        <span class="skill-chip">RICE Framework</span>
+        <span class="skill-chip">Data-Driven Prioritisation</span>
+        <span class="skill-chip">Stakeholder Memo Writing</span>
+        <span class="skill-chip">Executive Communication</span>
+        <span class="skill-chip">Sprint Planning</span>
+      </div>
+    </div>
+
+    <!-- OPEN PROFILE TRD -->
+    <div class="project-card">
+      <span class="project-tag">Technical Documentation</span>
+      <h3>Open Profile — Technical Requirements Document</h3>
+      <p>Wrote the full TRD for Open Profile, a searchable digital identity platform. Covered authentication flows (email, Google OAuth), JWT token management, database schema, design tokens confirmed with the design team, and a 5-step design handoff process. Identified and documented the LinkedIn OAuth deferral from MVP scope.</p>
+      <div class="project-skills">
+        <span class="skill-chip">TRD Writing</span>
+        <span class="skill-chip">Authentication Systems</span>
+        <span class="skill-chip">Data Modelling</span>
+        <span class="skill-chip">Cross-functional Alignment</span>
+      </div>
+    </div>
+
+    <!-- TICKETS -->
+    <div class="project-card">
+      <span class="project-tag">Execution Planning · Ticket Writing</span>
+      <h3>Open Profile — Feature Implementation Tickets</h3>
+      <p>Structured 13 execution-ready implementation tickets across Design, Frontend, and Backend teams for the Profile Content Core feature — covering the component system, Links component, and Portfolio component. Each ticket included user stories, acceptance criteria, dependencies, and edge cases.</p>
+      <div class="project-skills">
+        <span class="skill-chip">Ticket Structuring</span>
+        <span class="skill-chip">Acceptance Criteria</span>
+        <span class="skill-chip">Cross-functional Planning</span>
+        <span class="skill-chip">Dependency Mapping</span>
+      </div>
+    </div>
+
+    <!-- CREDLANE AUDIT -->
+    <div class="project-card">
+      <span class="project-tag">Product Audit · Leadership Judgement</span>
+      <h3>CredLane — Lead PM Formal Assessment</h3>
+      <p>Conducted a formal pre-execution product audit of CredLane, a verified talent pipeline for African early-career professionals. Delivered an Approved With Risks verdict with five specific findings covering assessment quality, cold start risk, threshold validation, stakeholder trust, and role track scalability. Presented to a live mentor panel.</p>
+      <div class="project-skills">
+        <span class="skill-chip">Product Auditing</span>
+        <span class="skill-chip">Risk Assessment</span>
+        <span class="skill-chip">Live Presentation</span>
+        <span class="skill-chip">Critical Analysis</span>
+      </div>
+    </div>
+
+    <!-- SWOOP DEBATE -->
+    <div class="project-card">
+      <span class="project-tag">Product Strategy · Research</span>
+      <h3>Swoop Investment Debate — AGAINST Position</h3>
+      <p>Led the AGAINST position in a live team debate on whether Swoop deserved its $7.3M seed investment. Built a research document with unit economics modelling, causal failure analysis of five failed Lagos food delivery operators, steelmanned rebuttals, a 12-month risk table with trigger indicators, and a falsifiability standard. Argued live in crossfire against the FOR team.</p>
+      <div class="project-skills">
+        <span class="skill-chip">Market Analysis</span>
+        <span class="skill-chip">Unit Economics</span>
+        <span class="skill-chip">Competitive Intelligence</span>
+        <span class="skill-chip">Public Speaking</span>
+        <span class="skill-chip">Debate</span>
+      </div>
+    </div>
+
+    <!-- AURA -->
+    <div class="project-card">
+      <span class="project-tag">Product Concept · Innovation</span>
+      <h3>Aura — Mixed Reality Wellness &amp; Productivity App</h3>
+      <p>Conceived and fully documented Aura, a Mixed Reality companion app that overlays productivity tools and wellness routines into the user's physical space using AI. Wrote the full requirements document covering two product modes, five core features, privacy architecture, success metrics, and a three-phase GTM strategy. Presented to mentors as a live product concept.</p>
+      <div class="project-skills">
+        <span class="skill-chip">Product Conceptualisation</span>
+        <span class="skill-chip">MR Technology</span>
+        <span class="skill-chip">Requirements Writing</span>
+        <span class="skill-chip">AI Integration</span>
+        <span class="skill-chip">GTM Strategy</span>
+      </div>
+    </div>
+
+    <!-- DEVOPS -->
+    <div class="project-card">
+      <span class="project-tag">Infrastructure PM · DevOps</span>
+      <h3>Open Profile — DevOps Observability Tickets</h3>
+      <p>Managed the DevOps team on Open Profile as assigned PM. Built a complete observability and monitoring ticket set covering Prometheus metric instrumentation, Grafana dashboard deployment, alert configuration for critical thresholds, security hardening, and end-to-end validation. Also created a check-in alignment tracker mapping team blockers to specific tickets.</p>
+      <div class="project-skills">
+        <span class="skill-chip">DevOps PM</span>
+        <span class="skill-chip">Infrastructure Ticketing</span>
+        <span class="skill-chip">Prometheus & Grafana</span>
+        <span class="skill-chip">Monitoring Strategy</span>
+      </div>
+    </div>
+
+    <!-- NORA -->
+    <div class="project-card">
+      <span class="project-tag">UX Audit · Product Analysis</span>
+      <h3>Nora App — UX Teardown</h3>
+      <p>Conducted a structured UX audit of the Nora app, identifying usability gaps, navigation inconsistencies, and feature gaps. Documented findings with specific recommendations and presented results to mentors. Scored 9.5 out of 10 — the highest individual score in this stage.</p>
+      <div class="project-skills">
+        <span class="skill-chip">UX Auditing</span>
+        <span class="skill-chip">Product Analysis</span>
+        <span class="skill-chip">Heuristic Evaluation</span>
+        <span class="skill-chip">Presentation</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-eyebrow">Skills</span>
+    <h2 class="section-title">What I bring to a team</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Product Management</h4>
+      <ul>
+        <li>PRD &amp; FRD Writing</li>
+        <li>Technical Requirements Documentation</li>
+        <li>RICE Prioritisation</li>
+        <li>Product Auditing</li>
+        <li>Roadmap Planning</li>
+        <li>Sprint Planning</li>
+        <li>User Story Writing</li>
+        <li>Acceptance Criteria Writing</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>Strategy &amp; Research</h4>
+      <ul>
+        <li>Market Analysis</li>
+        <li>Competitive Intelligence</li>
+        <li>Unit Economics Modelling</li>
+        <li>Investment Thesis Evaluation</li>
+        <li>Stakeholder Management</li>
+        <li>Executive Communication</li>
+        <li>Product Strategy</li>
+        <li>Risk Assessment</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h4>Tools &amp; Platforms</h4>
+      <ul>
+        <li>Figma</li>
+        <li>Notion</li>
+        <li>Google Sheets</li>
+        <li>ClickUp</li>
+        <li>Miro</li>
+        <li>Gamma (Presentation)</li>
+        <li>Slack</li>
+        <li>AI Productivity Tools</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-eyebrow">Experience</span>
+    <h2 class="section-title">Where I have worked</h2>
+  </div>
+  <div class="experience-list">
+
+    <div class="exp-card">
+      <div>
+        <div class="exp-role">Product Management Intern</div>
+        <div class="exp-company">HNG Tech — Remote</div>
+        <p class="exp-desc">Completed nine rigorous stages of product management work covering UX auditing, product conceptualisation, technical documentation, RICE prioritisation, cross-functional ticket writing, product strategy debates, and live mentor presentations. Worked on the Open Profile product team as an active PM contributor and as PM for the DevOps team. Scored 9.5 out of 10 on the Q3 Roadmap Prioritisation task.</p>
+      </div>
+      <div class="exp-date">2026</div>
+    </div>
+
+    <div class="exp-card">
+      <div>
+        <div class="exp-role">Project Manager — Team 4</div>
+        <div class="exp-company">Excelerate — Prompt Engineering &amp; Research Integration Internship</div>
+        <p class="exp-desc">Led a cross-functional team of eight through a four-week delivery cycle for a Prompt Engineering and Research Integration programme. Managed quality control, handled substitute writing for non-submitting team members, and coordinated final consolidated deliverables across prompt design, evaluation, and presentation formats.</p>
+      </div>
+      <div class="exp-date">2026</div>
+    </div>
+
+    <div class="exp-card">
+      <div>
+        <div class="exp-role">Founder</div>
+        <div class="exp-company">Amé Cosmetics — Nigeria</div>
+        <p class="exp-desc">Building a Nigerian cosmetic brand focused on odour-control and underarm care products. The name means "water" in Esan. Managing product formulation with confirmed preservative systems and INCI naming, local Nigerian ingredient sourcing strategy, and brand positioning.</p>
+      </div>
+      <div class="exp-date">Ongoing</div>
+    </div>
+
+    <div class="exp-card">
+      <div>
+        <div class="exp-role">Office Assistant &amp; Administrative Coordinator</div>
+        <div class="exp-company">Real Estate Firm — Nigeria</div>
+        <p class="exp-desc">Provided project coordination and administrative support. Developed foundational skills in cross-functional communication, documentation management, and stakeholder correspondence that directly transferred into product management practice.</p>
+      </div>
+      <div class="exp-date">Prior</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section>
+  <div class="section-header">
+    <span class="section-eyebrow">Certifications</span>
+    <h2 class="section-title">Credentials</h2>
+  </div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div class="cert-name">HNG Tech PM Internship — Stage 9</div>
+      <div class="cert-issuer">HNG Tech · 2026</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🤖</div>
+      <div class="cert-name">AI Career Essentials</div>
+      <div class="cert-issuer">ALX Africa · 2025</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">💼</div>
+      <div class="cert-name">Virtual Assistant Programme</div>
+      <div class="cert-issuer">ALX Africa · 2024</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <h2>Let's build something together.</h2>
+    <p>I am open to remote product management roles, PM coordination opportunities, and product consulting. Based in Nigeria and available globally.</p>
+    <div class="contact-links">
+      <a href="https://linkedin.com/in/faithoriakhi" target="_blank">LinkedIn</a>
+      <a href="mailto:faithoriakhi1398@gmail.com">Email Me</a>
+      <a href="https://www.upwork.com/freelancers/~01ea67c249feec20a6?mp_source=share”
+" target="_blank">Upwork</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Faith Oriakhi · Product Manager · Lagos, Nigeria · 2026</p>
+</footer>
+
+</body>
+</html>
